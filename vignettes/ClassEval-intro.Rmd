@@ -1,0 +1,93 @@
+---
+title: "ClassEval-intro"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ClassEval-intro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+This package provides tools for classification tasks including model training, evaluation metrics, cross-validation, and visualization.
+
+
+## Example workflow
+
+```{r example, echo=TRUE}
+library(ClassEval)
+# Load data
+data(titanic_expanded)
+
+# Train model
+model <- train_logistic_model(Survived ~ Class + Sex, titanic_expanded)
+
+# Predict
+pred <- predict_model(model, titanic_expanded)
+
+# Evaluate
+accuracy_score(titanic_expanded$Survived, pred)
+
+# Plot
+plot_confusion_matrix(titanic_expanded$Survived, pred)
+
+# Cross validation
+k_fold_cv(Survived ~ Class + Sex, titanic_expanded)
+
+# Compare models
+compare_models(Survived ~ Class + Sex, titanic_expanded)
+```
+
+
+## Reflectioon
+
+During the development of the ClassEval package, several important lessons and insights were gained:
+
+1. Modular design improves code reusability
+
+By separating functionalities into individual functions such as model training, prediction, evaluation, and visualization, the package becomes easier to maintain and extend. This modular approach avoids code duplication and enhances clarity.
+
+2. Pipeline integration is essential in machine learning workflows
+
+The package demonstrates a complete pipeline from model training to evaluation (train → predict → evaluate → visualize). This structured workflow reflects real-world data science practices.
+
+3. Data preprocessing plays a critical role
+
+Handling data types correctly is crucial. For example, converting labels to factors for SVM classification is necessary to avoid unintended regression behavior.
+
+4. R-specific data type issues is important!
+
+The conversion between factor, character, and numeric types can lead to subtle bugs. Proper handling of these conversions ensures correct model predictions and evaluation results.
+
+5. Cross-validation improves model reliability
+
+Implementing k-fold cross-validation provides a more robust estimate of model performance compared to a single train-test split, reducing variance and overfitting risk.
+
+6. Visualization enhances interpretability
+
+Using heatmaps to represent confusion matrices makes it easier to understand model performance compared to raw numerical outputs.
+
+7. Leveraging existing libraries effectively
+
+The use of packages such as ggplot2, e1071, and pROC demonstrates how combining existing tools can accelerate development while maintaining flexibility.
+
+8. Automated testing ensures correctness and robustness
+
+Writing unit tests using testthat helps verify that each function behaves as expected, reducing the risk of hidden bugs.
+
+9. Consistent interface design improves usability
+
+Designing a unified prediction interface (predict_model) for different models simplifies usage and enhances user experience.
+
+10. Building an R package requires more than writing functions
+
+Beyond coding, tasks such as documentation, namespace management, dataset integration, and vignette writing are essential parts of package development.
+
+Overall, this project provided practical experience in building a structured and reusable data science toolkit in R.
