@@ -32,4 +32,5 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 7.3.1
-
+URL: https://github.com/Monaliyaaaa/ClassEval
+BugReports: https://github.com/Monaliyaaaa/ClassEval/issues
