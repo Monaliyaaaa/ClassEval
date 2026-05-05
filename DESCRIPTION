@@ -1,0 +1,35 @@
+Package: ClassEval
+Type: Package
+Title: Classification Methods and Evaluation Metrics
+Version: 0.2.0
+Authors@R: c(
+    person("Boqi", "Wang", email = "122090511@link.cuhk.edu.cn", role = c("aut", "cre")),
+    person("Yuyue", "Liu", email = "122090359@link.cuhk.edu.cn", role = "aut"),
+    person("Ziqian", "Chen", email = "121040049@link.cuhk.edu.cn", role = "aut")
+  )
+Description: Provides a comprehensive suite of tools for classification tasks, 
+    including implementation of support vector machines (SVM) and logistic 
+    regression. The package offers robust evaluation metrics such as accuracy, 
+    precision, recall, F1 score, and AUC. It features automated 
+    visualization for ROC curves and confusion matrices, alongside utilities 
+    for k-fold cross-validation and multi-model performance comparison. 
+    While designed for general-purpose classification, it includes the 
+    Titanic dataset as an illustrative example.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 3.5.0)
+Imports:
+    ggplot2,
+    pROC,
+    e1071,
+    stats,
+    magrittr
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.3.1
+
